@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Krish.Models.Number>
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table" style="margin-top: 40px">
+    <tr>
+        <th>
+            <p class="text-center">Serial No</p>
+        </th>
+        @if (User.IsInRole("Admin"))
+        {
+            <th>
+                <p class="text-center">Employee</p>
+            </th>
+        }
+        <th>
+            <p class="text-center">Numbers</p>
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    <p class="text-center">
+                        @Html.DisplayFor(modelItem => item.AllQty)
+                    </p>
+                </td>
+
+                <td>
+                    <p class="text-center">
+                        @Html.DisplayFor(modelItem => item.Employee)
+                    </p>
+                </td>
+            }
+
+            @if (!User.IsInRole("Admin"))
+            {
+                <td>
+                    <p class="text-center">
+                        @Html.DisplayFor(modelItem => item.Qty)
+                    </p>
+                </td>
+            }
+
+
+            <td>
+                <p class="text-center">
+                    @Html.DisplayFor(modelItem => item.WNumber)
+                </p>
+            </td>
+
+        </tr>
+    }
+
+
+</table>
+
+

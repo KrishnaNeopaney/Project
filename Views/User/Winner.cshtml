@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Krish.Models.Draw>
+
+@{
+    ViewBag.Title = "Winner";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table" style="margin-top: 40px">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PName)
+        </th>
+    
+        <th>
+            @Html.DisplayNameFor(model => model.ANumber)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PName)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.ANumber)
+            </td>
+        </tr>
+    }
+
+</table>
+
+
